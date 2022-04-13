@@ -1,0 +1,5 @@
+coverage==5.0.3
+libraw.py==1.0
+Pillow==7.0.0
+PyYAML==5.3
+rawkit==0.6.0
