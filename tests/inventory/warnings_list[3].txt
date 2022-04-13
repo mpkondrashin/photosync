@@ -1,0 +1,1 @@
+/Users/michael/Pictures/photo/Software/Scripts/PhotoSync/tests/TDD0041_Copy_link_over_file/test/archive/some_link.txt: Can not overwrite by link

@@ -1,0 +1,1 @@
+/Users/michael/PycharmProjects/photosync/tests/test/sync/TDD0250_Unsupported_file_type/raise_test/local/fifo: Unsupported file type: 010644

@@ -1,0 +1,2 @@
+*more than one .raw/.big/.jpg folder
+*extra .raw/.big/.jpg folder

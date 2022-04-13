@@ -1,0 +1,6 @@
+*20150103_2424.jpg: Extra file
+#*Missing file: 20150103_2427.jpg
+#*Missing file: 20150103_2423.jpg
+*Missing file: 03.01.2015 На ВДНХ mmk-id.raw/20150103_2427.JPG
+*Missing file: 03.01.2015 На ВДНХ mmk-id.raw/20150103_2424.JPG
+*Missing file: 03.01.2015 На ВДНХ mmk-id.raw/20150103_2423.JPG

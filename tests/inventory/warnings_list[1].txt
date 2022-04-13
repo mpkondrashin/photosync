@@ -1,0 +1,1 @@
+Missing: /Users/michael/PycharmProjects/photosync/tests/test/hash/TDD0281_Check_hash_missing/archive/archive/20150728_3154.jpg

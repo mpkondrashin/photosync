@@ -1,0 +1,4 @@
+*archive.shadow: wrong attributes
+Not protected file: *0150728_3153.JPG
+Not protected folder: *a.raw
+Not protected folder: *archive.shadow

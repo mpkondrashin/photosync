@@ -1,0 +1,1 @@
+Hash error: /Users/michael/PycharmProjects/photosync/tests/test/hash/TDD0282_Check_hash_modified/archive/archive/20150728_3153.jpg

@@ -1,0 +1,1 @@
+sync local archive -y -w warnings_list.txt
