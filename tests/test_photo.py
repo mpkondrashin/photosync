@@ -16,6 +16,7 @@ from sync import Sync
 import util
 import photo
 import repair
+import compare_images
 
 TESTS_DIR_DEFAULT = 'test'
 TESTS_DIR_MUTATIONS = '../test'
@@ -184,13 +185,17 @@ class compare_dir_trees:
 
     def compare_files(self, path_a, path_b):
         if path_a.endswith('.md5'):
-            if not same_md5(path_a, path_b):
-                print('Hash Content {} != {}'.format(path_a, path_b))
+            if not shallow_same_hash_md5(path_a, path_b): #was same_hash
+                print('Hash content {} != {}'.format(path_a, path_b))
+                return False
+        elif path_a.endswith('.jpg'):
+            if same_files_content(path_a, path_b):
+                return True
+            if not compare_images.same_image(path_a, path_b):
+                print('JPEGs are different {} != {}'.format(path_a, path_b))
                 return False
         else:
-            if open(path_a, 'rb').read() != open(path_b, 'rb').read():
-                print('Content {} != {}'.format(path_a, path_b))
-                return False
+            return same_files_content(path_a, path_b)
         #ast = stat_path(path_a)
         #bst = stat_path(path_b)
         #if ast['size'] != bst['size']:
@@ -198,6 +203,12 @@ class compare_dir_trees:
         #    return False
         return True
 
+
+def same_files_content(path_a, path_b):
+    if open(path_a, 'rb').read() != open(path_b, 'rb').read():
+        print('Content {} != {}'.format(path_a, path_b))
+        return False
+    return True
 
 def are_dir_trees_equal(dir1, dir2, mtime=True, nlink=True, flags=True):
     #    print("are_dir_trees_equal({}, {})".format(dir1, dir2))
