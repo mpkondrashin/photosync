@@ -47,7 +47,6 @@ def ascii_file_name(path):
     """
 
     # add try:/finally:
-
     tmp_dir = tempfile.mkdtemp()
     link_path = os.path.join(tmp_dir, 'link')
     os.symlink(path, link_path)

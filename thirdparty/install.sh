@@ -11,6 +11,13 @@ BUILD="${MY_DIR}/build"
 mkdir -p "${BUILD}"
 echo "Folder for building components" > "${BUILD}/README.txt"
 
+CMAKE="/usr/local/opt/cmake/bin/cmake"
+
+if [ ! -f ${CMAKE} ]; then
+    echo "${CMAKE} is missing. Run brew install cmake"
+    exit 1
+fi
+
 exiftool()
 {
   if [ -x ${ROOT}/exiftool ]
@@ -37,7 +44,7 @@ ffmpeg()
   fi
 	git clone https://git.ffmpeg.org/ffmpeg.git
 	cd ffmpeg
-	./configure --prefix="${ROOT}"
+	./configure --prefix="${ROOT}" --disable-x86asm
 	make
 	make install
 }
@@ -72,7 +79,7 @@ libraw()
   cd libraw
   git checkout 0.20.0
   cp -R ../libraw-cmake/* .
-  cmake -DMAKE_INSTALL_PREFIX=${ROOT} .
+  ${CMAKE} -DMAKE_INSTALL_PREFIX=${ROOT} .
   make -DMAKE_INSTALL_PREFIX=${ROOT} 
   make install -DMAKE_INSTALL_PREFIX=${ROOT} 
 }
