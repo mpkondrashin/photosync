@@ -15,7 +15,20 @@ CHECK_HASH = False
 RAW_DIRS_EXTS = ('raw', 'big', 'jpg')
 
 HASH_FILE = 'hash.md5'
-IGNORE_FILES = ['.DS_Store', 'Thumbs.db', '*backup_stop.txt', '*backup_start.txt', '._*', 'Picasa.ini']
+IGNORE_FILES = [
+    '.DocumentRevisions-V100',
+    '.Spotlight-V100',
+    '.TemporaryItems',
+    '.Trashes',
+    '.fseventsd',
+    '.DS_Store',
+    'Thumbs.db',
+    '*backup_stop.txt',
+    '*backup_start.txt',
+    '._*',
+    'Picasa.ini',
+]
+
 IGNORE_FILE_MASKS = IGNORE_FILES
 CAMERA_RAW_EXT = [ '.png', ".3fr", ".arw", ".bay", ".cap", ".cr2", ".crw", ".dcr", ".dcs", ".dng", ".drf",
 		".eip", ".erf", ".fff", ".iiq", ".k25", ".kdc", ".mef", ".mos", ".mrw", ".nef", ".nrw", ".orf", ".pef", ".ptx", 

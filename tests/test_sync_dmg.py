@@ -104,8 +104,8 @@ class TestSyncScope(unittest.TestCase):
         mkdir(self.TEST_FOLDER)
 
     def tearDown(self):
-        shutil.rmtree(self.TEST_FOLDER)
-        #pass
+        #shutil.rmtree(self.TEST_FOLDER)
+        pass
 
     @unittest.skip("working")
     def test_sync(self):

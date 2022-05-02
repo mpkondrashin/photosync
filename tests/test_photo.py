@@ -72,7 +72,9 @@ def same_md5(apath, bpath):
 def check_hash_md5(path: str) -> bool:
     folder = os.path.dirname(path)
     for line in open(path).readlines():
-        md5, file_name = line.strip().split()
+        line = line.strip()
+        md5 = line[:32]
+        file_name = line[34:]
         file_path = os.path.join(folder, file_name)
         try:
             result = hashlib.md5(open(file_path, mode='rb').read())
@@ -184,24 +186,25 @@ class compare_dir_trees:
         return True
 
     def compare_files(self, path_a, path_b):
+        if same_files_content(path_a, path_b):
+            return True
         if path_a.endswith('.md5'):
-            if not shallow_same_hash_md5(path_a, path_b): #was same_hash
+            ok = shallow_same_hash_md5(path_a, path_b)
+            if not ok:
                 print('Hash content {} != {}'.format(path_a, path_b))
-                return False
-        elif path_a.endswith('.jpg'):
-            if same_files_content(path_a, path_b):
-                return True
-            if not compare_images.same_image(path_a, path_b):
+            return ok
+        elif path_a.endswith('.jpg') or path_a.endswith('.gif'):
+            ok = compare_images.same_image(path_a, path_b)
+            if not ok:
                 print('JPEGs are different {} != {}'.format(path_a, path_b))
-                return False
+            return ok
         else:
-            return same_files_content(path_a, path_b)
+            return False
         #ast = stat_path(path_a)
         #bst = stat_path(path_b)
         #if ast['size'] != bst['size']:
         #    print('Size {} (size = {}) != {} (size = {})'.format(path_a, ast['size'], path_b, bst['size']))
         #    return False
-        return True
 
 
 def same_files_content(path_a, path_b):
@@ -210,6 +213,7 @@ def same_files_content(path_a, path_b):
         return False
     return True
 
+'''
 def are_dir_trees_equal(dir1, dir2, mtime=True, nlink=True, flags=True):
     #    print("are_dir_trees_equal({}, {})".format(dir1, dir2))
     if not os.path.isdir(dir1):
@@ -278,7 +282,7 @@ def are_dir_trees_equal(dir1, dir2, mtime=True, nlink=True, flags=True):
                 print('Links differ: {} != {}'.format(alink, blink))
                 return False
     return True
-
+'''
 
 ROOT = 'tests/tests'
 
@@ -590,4 +594,6 @@ if __name__ == '__main__':
         sys.exit(run_tests())
     # Sometimes folder is generated in other second so mtime should not be controlled
     # by tests (for folders)
+    # all = list(range(1, 78))
+    # del all[72]
     sys.exit(run_tests())
